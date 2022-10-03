@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export default function Resultado() {
+export default function Resultado(props) {
   return (
     <Footer>
-      <h1>0/8 Concluídos</h1>
+      <h1>{props.contador}/8 Concluídos</h1>
     </Footer>
   );
 }

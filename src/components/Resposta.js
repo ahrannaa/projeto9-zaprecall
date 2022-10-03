@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
 export default function Resposta(props) {
+  
   return (
-    <PerguntaAberta>
+    <PerguntaAberta display={props.display}>
       <h1>{props.resposta}</h1>
       <FooterConcluido>
         <ContainerBotoes>
-          <BotaoVermelho>Não lembrei</BotaoVermelho>
-          <BotaoLaranja>Quase não lembrei</BotaoLaranja>
-          <BotaoVerde>Zap!</BotaoVerde>
+          <BotaoVermelho onClick={props.onClick}>Não lembrei</BotaoVermelho>
+          <BotaoLaranja onClick={props.onClick}>Quase não lembrei</BotaoLaranja>
+          <BotaoVerde onClick={props.onClick}>Zap!</BotaoVerde>
         </ContainerBotoes>
       </FooterConcluido>
     </PerguntaAberta>
@@ -30,7 +31,7 @@ const PerguntaAberta = styled.div`
   line-height: 22px;
   color: #333333;
   position: relative;
-  display: flex;
+  display: ${(prop) => prop.display === "true" ? "flex" : "none"};
   flex-direction: column;
   justify-content: space-between;
 `;

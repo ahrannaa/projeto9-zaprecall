@@ -2,10 +2,11 @@ import seta_virar from "../assets/img/seta_virar.png";
 import styled from "styled-components";
 
 export default function Pergunta(props) {
+
   return (
-    <PerguntaAberta>
+    <PerguntaAberta display={props.display}>
       <h1>{props.pergunta}</h1>
-      <img src={seta_virar} alt="seta virar" />
+      <img onClick={props.onClick} src={seta_virar} alt="seta virar" />
     </PerguntaAberta>
   );
 }
@@ -28,6 +29,7 @@ const PerguntaAberta = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  display: ${(prop) => prop.display  === "true" ? "inline" : "none"};
 
   img {
     position: absolute;
