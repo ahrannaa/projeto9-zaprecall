@@ -5,8 +5,8 @@ export default function Pergunta(props) {
 
   return (
     <PerguntaAberta display={props.display}>
-      <h1>{props.pergunta}</h1>
-      <img onClick={props.onClick} src={seta_virar} alt="seta virar" />
+      <h1 data-identifier="flashcard-question">{props.pergunta}</h1>
+      <img data-identifier="flashcard-turn-btn" onClick={props.onClick} src={seta_virar} alt="seta virar" />
     </PerguntaAberta>
   );
 }

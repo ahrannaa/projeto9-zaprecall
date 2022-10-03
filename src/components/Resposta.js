@@ -4,12 +4,12 @@ export default function Resposta(props) {
   
   return (
     <PerguntaAberta display={props.display}>
-      <h1>{props.resposta}</h1>
+      <h1 data-identifier="flashcard-answer">{props.resposta}</h1>
       <FooterConcluido>
         <ContainerBotoes>
-          <BotaoVermelho onClick={() => props.onClick("RED")}>Não lembrei</BotaoVermelho>
-          <BotaoLaranja onClick={() => props.onClick("ORANGE")}>Quase não lembrei</BotaoLaranja>
-          <BotaoVerde onClick={() => props.onClick("GREEN")}>Zap!</BotaoVerde>
+          <BotaoVermelho data-identifier="forgot-btn" onClick={() => props.onClick("RED")}>Não lembrei</BotaoVermelho>
+          <BotaoLaranja data-identifier="almost-forgot-btn" onClick={() => props.onClick("ORANGE")}>Quase não lembrei</BotaoLaranja>
+          <BotaoVerde data-identifier="zap-btn" onClick={() => props.onClick("GREEN")}>Zap!</BotaoVerde>
         </ContainerBotoes>
       </FooterConcluido>
     </PerguntaAberta>
@@ -75,6 +75,9 @@ const BotaoVerde = styled.button`
   margin-right: 6px;
   margin-top: 65px;
   border:none;
+
+  &:hover {transform: scale(1.5);}
+ 
 `;
 
 const BotaoVermelho = styled.button`
@@ -96,6 +99,8 @@ const BotaoVermelho = styled.button`
   margin-right: 6px;
   margin-top: 65px;
   border:none;
+
+  &:hover {transform: scale(1.5);}
 `;
 
 const BotaoLaranja = styled.button`
@@ -117,4 +122,6 @@ const BotaoLaranja = styled.button`
   margin-right: 6px;
   margin-top: 65px;
   border:none;
+
+  &:hover {transform: scale(1.5);}
 `;

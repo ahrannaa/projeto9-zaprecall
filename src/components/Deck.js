@@ -8,6 +8,7 @@ import Pergunta from "./Pergunta";
 import styled from "styled-components";
 import { useState } from "react";
 import Resultado from "./Resultado";
+import ZapRecall from "./ZapRecall";
 
 function Flashcards(props) {
   const [showPerguntaFechada, setShowPerguntaFechada] = useState("true");
@@ -41,7 +42,7 @@ function Flashcards(props) {
     setshowResposta("true");
   }
 
-  function responderPergunta(botao) {
+  function responderPergunta(botao)  {
     props.incContador();
     setShowPerguntaFechada("true");
     setshowResposta("false");
@@ -49,27 +50,17 @@ function Flashcards(props) {
     setCor(styles[botao].color)
     setImg(styles[botao].img)
 
-    // if (botao === "RED") {
-    //   setCor("red");
-    //   setImg(icone_erro);
-    // } else if (botao === "ORANGE") {
-    //   setCor("orange");
-    //   setImg(icone_quase);
-    // } else if (botao === "GREEN") {
-    //   setCor("green");
-    //   setImg(icone_certo);
-    // }
   }
 
   return (
     <>
-      <PerguntaFechada
+      <PerguntaFechada data-identifier="flashcard-index-item" 
         display={showPerguntaFechada}
         color={cor}
         decoration={cor === "" ? "" : "line-through"}
       >
         <p>{props.nome}</p>
-        <img onClick={abrirPergunta} src={img} alt="seta play" />
+        <img data-identifier="flashcard-show-btn"onClick={abrirPergunta} src={img} alt="seta play" />
       </PerguntaFechada>
       <Pergunta
         onClick={abrirResposta}
@@ -85,27 +76,34 @@ function Flashcards(props) {
   );
 }
 
-export default function Deck(propos) {
+export default function Deck (props) {
   const [contador, setContador] = useState(0);
 
   function incContador() {
     setContador(contador + 1);
   }
 
-  return (
-    <>
-      {Cards.map((p) => (
-        <Flashcards
-          incContador={incContador}
-          nome={p.nome}
-          resposta={p.resposta}
-          pergunta={p.pergunta}
-        />
-      ))}
-      <Resultado contador={contador} />
-    </>
-  );
+  if (props.display === "true") {
+    return (
+      <>
+      <ZapRecall />
+        {Cards.map((p) => (
+          <Flashcards data-identifier="flashcard"
+            incContador={incContador}
+            nome={p.nome}
+            resposta={p.resposta}
+            pergunta={p.pergunta}
+          />
+        ))}
+        <Resultado data-identifier="flashcard-counter" contador={contador}/>
+      </>
+    );
+  } else {
+    return (<></>)
+  }
+
 }
+
 
 const PerguntaFechada = styled.div`
   width: 300px;
