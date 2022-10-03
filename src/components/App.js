@@ -1,6 +1,6 @@
 import ZapRecall from "./ZapRecall";
 import Deck from "./Deck";
-import Resultado from "./Resultado";
+
 import styled from "styled-components";
 
 
@@ -10,8 +10,7 @@ export default function App(props) {
     <ScreenContainer>
       <ZapRecall />
       <Deck/>
-      <Resultado/>
-      </ScreenContainer>
+    </ScreenContainer>
     
   );
 }

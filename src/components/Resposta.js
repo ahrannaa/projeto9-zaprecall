@@ -7,9 +7,9 @@ export default function Resposta(props) {
       <h1>{props.resposta}</h1>
       <FooterConcluido>
         <ContainerBotoes>
-          <BotaoVermelho onClick={props.onClick}>Não lembrei</BotaoVermelho>
-          <BotaoLaranja onClick={props.onClick}>Quase não lembrei</BotaoLaranja>
-          <BotaoVerde onClick={props.onClick}>Zap!</BotaoVerde>
+          <BotaoVermelho onClick={() => props.onClick("RED")}>Não lembrei</BotaoVermelho>
+          <BotaoLaranja onClick={() => props.onClick("ORANGE")}>Quase não lembrei</BotaoLaranja>
+          <BotaoVerde onClick={() => props.onClick("GREEN")}>Zap!</BotaoVerde>
         </ContainerBotoes>
       </FooterConcluido>
     </PerguntaAberta>
